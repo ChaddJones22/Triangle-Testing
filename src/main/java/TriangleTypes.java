@@ -1,8 +1,9 @@
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class TriangleTypes {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         DataInputStream stdin = new DataInputStream(System.in);
         System.out.println("Types of Triangles Program!");
@@ -20,13 +21,10 @@ public class TriangleTypes {
             System.out.println("Side 3?");
             float side3 = Float.parseFloat(stdin.readLine());
 
-            if ((side1 < 0) || (side2 < 0) || (side3 < 0))
-                System.out.println("Error: Side cannot be negative number.");
-            else {
-                Triangle T = new Triangle(side1, side2, side3);
+            Triangle T = new Triangle(side1, side2, side3);
+            System.out.println("We have a " + T.triangleType() + " triangle.");
+            TimeUnit.SECONDS.sleep(2);
 
-                System.out.println("We have a " + T.triangleType() + " triangle.");
-            }
             System.out.println("Do you want to run program again? y or n?");
             answer = stdin.readLine();
         }

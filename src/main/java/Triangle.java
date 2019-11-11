@@ -9,13 +9,17 @@ public class Triangle {
 
     public String triangleType(){
         String results = "";
+        if ((side1 <= 0) || (side2 <= 0) || (side3 <= 0)){
+            System.out.println("Error: Sides cannot be less than or equal to 0.");
+            results+="Invalid";
+        }
         if ((side1 == side2) && (side1 == side3)) //equilateral test
             results+="Equilateral";
         if (((side1 == side2) && (side1 != side3)) ||
                 ((side1 == side3) && (side1 != side2)) ||
                 ((side2 == side3) && (side2 != side1))) //Iso Test
             results+="Isosceles";
-        if ((side1 != side2) && (side1 != side3) && (side2 != side3)) //Scal Test
+        if ((side1 != side2) && (side1 != side3) && (side2 != side3)) //Scalene Test
             results+="Scalene";
         if (((side1*side1) == ((side2*side2) + (side3*side3))) ||
                 ((side2*side2) == ((side1*side1) + (side3*side3))) ||
